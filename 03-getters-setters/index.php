@@ -46,6 +46,7 @@ require_once "Personnage.php";
     echo "<p>".'echo $joueur5->getGenre() = '. $joueur5->getGenre()."</p>";
 
     var_dump($joueur1,$joueur2,$joueur3,$joueur4,$joueur5,$joueur6);
+
     ?>
 </body>
 </html>

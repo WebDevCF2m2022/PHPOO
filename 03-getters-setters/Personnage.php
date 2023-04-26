@@ -145,4 +145,5 @@ class Personnage
                     return $this->getNom(). "est vivant et a encore {$this->getPointDeVie()} points de vie !";
                 }
             }
+
 }
