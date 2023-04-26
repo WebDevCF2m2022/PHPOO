@@ -12,9 +12,19 @@ require_once "Personnage.php";
 <body>
     <h1>Getters et setters</h1>
     <h2>Utilisation d'une classe Personnage</h2>
+    <p>Lecture d'une constante publique</p>
+    <p>echo Personnage::NB_FACE_DE</p>
+    <?php
+    echo Personnage::NB_FACE_DE;
+    echo "<br>";
+    ?>
     <?php
     $joueur1 = new Personnage("Humain","Luc");
     $joueur2 = new Personnage("Elf","Luka","Homme");
+    echo $joueur1->isAlive();
+    echo "<br>";
+    echo $joueur2->isAlive();
+    echo "<p>Joueur1 a {$joueur1->getPointDeVie()} points de vie</p>";
 
     var_dump($joueur1,$joueur2);
     ?>
