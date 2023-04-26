@@ -28,13 +28,67 @@ class Personnage
     // Méthodes - fonctions avec visibilité et isolation
 
         // Constructeur - Public, appelé lors de l'instanciation de la classe
-        public function __construct(string $type, string $name, string $genre = "")
+        public function __construct(string $typage, string $name, string $gender = "")
         {
-
+            $this->setType($typage);
+            $this->setNom($name);
+            $this->setGenre($gender);
         }
 
 
         // Setters - ou mutators
+
+            // le type doit se trouver dans la liste de type ARRAY_TYPE, self:: représente la classe
+            public function setType(string $t): void
+            {
+                if(in_array($t,self::ARRAY_TYPE)){
+                    $this->type = $t;
+                }
+            }
+
+            // le nom doit être un string de minimum 3 caractères et maximum 18
+            public function setNom(string $nom): void
+            {
+                // pour ne pas répéter l'exécution du strlen, création d'une variable (bonne pratique, surtout dans
+                // des boucles)
+                $nb = strlen($nom);
+                if($nb >=3 && $nb <=18){
+                    $this->nom = $nom;
+                }else{
+                    echo "Nom trop court ou trop long";
+                    $this->nom = "Anonyme";
+                }
+            }
+
+            // le genre est optionnel
+            public function setGenre(?string $g): void
+            {
+                $this->genre = $g;
+            }
+
+
+            public function setPointDeVie(int $pointDeVie): void
+            {
+                $this->pointDeVie = $pointDeVie;
+            }
+
+            public function setAttaque(int $attaque): void
+            {
+                $this->attaque = $attaque;
+            }
+
+            public function setDefense(int $defense): void
+            {
+                $this->defense = $defense;
+            }
+
+            public function setDexterite(int $dexterite): void
+            {
+                $this->dexterite = $dexterite;
+            }
+
+
+
 
         // Getters - ou accessors
 
@@ -61,6 +115,26 @@ class Personnage
              {
                  return $this->pointDeVie;
              }
+
+
+            public function getAttaque(): int
+            {
+                return $this->attaque;
+            }
+
+
+            public function getDefense(): int
+            {
+                return $this->defense;
+            }
+
+
+            public function getDexterite(): int
+            {
+                return $this->dexterite;
+            }
+
+
 
 
             // fonction publique pour nous dire si un Personnage est vivant ou mort
