@@ -27,7 +27,9 @@ class Personnage
     // Constructeur - permet d'initialiser les attributs lors de l'instanciation de la classe - utilisé pour les attributs obligatoires en passant par les setters.
     public function __construct(string $type, string $name, string $genre = "")
     {
-
+      $this->setType($type);
+      $this->setNom($name);
+      $this->setGenre($genre);
     }
 
     // Setters - permettent de modifier les attributs
