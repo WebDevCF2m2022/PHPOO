@@ -34,7 +34,7 @@ class Personnage
     protected $dexterite = 100;
 
     // Constantes
-    public const NB_FACE_DE = 12;
+    public const NB_FACE_DE = 12; // dé de type Dodécaèdre
     public const ARRAY_TYPE = [
         'Humains',
         'Elfes',
@@ -60,13 +60,42 @@ class Personnage
             $this->setNom($name);
             $this->setGenre($gender);
             // appel la méthode protégée qui initialise les points de vie
+            $this->initPointDeVie();
             // appel la méthode protégée qui initialise l'attaque
             // appel la méthode protégée qui initialise la défense
             // appel la méthode protégée qui initialise la dextérité
         }
 
+        // fonction publique qui lance les dés
+        public function lanceDes(int $des=1):array{
+            // sortie numérique pour le return
+            $nb = 0;
+            // sortie en tableau pour le tracing des actions
+            $sortie = [];
+            // tant que l'on a des dés
+            for($i=0;$i<$des;$i++){
+                // on lance un dés
+                $lance = mt_rand(1,self::NB_FACE_DE);
+                // on ajoute à la valeur de sortie finale
+                $nb += $lance;
+                // tracing (non obligatoire) pour garder les lancés de dés
+                $sortie[$i]="Lancé : $lance/".self::NB_FACE_DE;
+            }
+            $sortie['total'] = $nb;
+            return $sortie;
+        }
+
         // Créez une méthode protégée qui va prendre les points de vie (avec le getter) et rajouter 3 lancés de dés
         // en utilisant la constant NB_FACE_DE et mettre à jour les points de vie (avec le setter)
+        protected function initPointDeVie(){
+            // On prend les points de vie avec le getter
+            $pdv = $this->getPointDeVie();
+            // On y ajoute 3 lancé de dés
+            $pdv += mt_rand(1,self::NB_FACE_DE)+mt_rand(1,self::NB_FACE_DE)+mt_rand(1,self::NB_FACE_DE);
+            // On modifie les points de vie avec le setter
+            $this->setPointDeVie($pdv);
+
+        }
 
         // Créez une méthode protégée qui va prendre l'attaque (avec le getter) et rajouter OU diminuer (1 chance sur 2) 2
         // lancés de dés en utilisant la constant NB_FACE_DE et mettre à jour l'attaque (avec le setter)
