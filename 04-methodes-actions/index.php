@@ -47,13 +47,17 @@ if(isset($_POST['nom'],$_POST['genre'],$_POST['type'])){
     </select>
 
     <input type="submit" value="Créer un Personnage">
+    <p>Test de la méthode lanceDes(15) de la classe Personnage</p>
     <?php
     // si $perso est un objet
     if(is_object($perso)){
-        var_dump($perso->lanceDes(3));
-    }
+        var_dump($perso->lanceDes(15));
+    }?>
+    <h3>var_dump</h3>
+    <?php
     var_dump($_POST,$perso);
     ?>
+</form>
 </body>
 </html>
 <?php

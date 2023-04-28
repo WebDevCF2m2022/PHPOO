@@ -74,7 +74,7 @@ class Personnage
             $sortie = [];
             // tant que l'on a des dés
             for($i=0;$i<$des;$i++){
-                // on lance un dés
+                // on lance un dé
                 $lance = mt_rand(1,self::NB_FACE_DE);
                 // on ajoute à la valeur de sortie finale
                 $nb += $lance;
@@ -85,13 +85,13 @@ class Personnage
             return $sortie;
         }
 
-        // Créez une méthode protégée qui va prendre les points de vie (avec le getter) et rajouter 3 lancés de dés
-        // en utilisant la constant NB_FACE_DE et mettre à jour les points de vie (avec le setter)
+        // Créez une méthode protégée qui va prendre les points de vie (avec le getter) et rajouter 20 lancés de dés
+        // en utilisant la constante NB_FACE_DE et mettre à jour les points de vie (avec le setter)
         protected function initPointDeVie(){
             // On prend les points de vie avec le getter
             $pdv = $this->getPointDeVie();
-            // On y ajoute 3 lancé de dés
-            $pdv += mt_rand(1,self::NB_FACE_DE)+mt_rand(1,self::NB_FACE_DE)+mt_rand(1,self::NB_FACE_DE);
+            // On y ajoute 20 lancés de dés
+            $pdv += $this->lanceDes(20)['total'];
             // On modifie les points de vie avec le setter
             $this->setPointDeVie($pdv);
 
