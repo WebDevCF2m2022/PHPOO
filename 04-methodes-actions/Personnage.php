@@ -59,7 +59,24 @@ class Personnage
             $this->setType($typage);
             $this->setNom($name);
             $this->setGenre($gender);
+            // appel la méthode protégée qui initialise les points de vie
+            // appel la méthode protégée qui initialise l'attaque
+            // appel la méthode protégée qui initialise la défense
+            // appel la méthode protégée qui initialise la dextérité
         }
+
+        // Créez une méthode protégée qui va prendre les points de vie (avec le getter) et rajouter 3 lancés de dés
+        // en utilisant la constant NB_FACE_DE et mettre à jour les points de vie (avec le setter)
+
+        // Créez une méthode protégée qui va prendre l'attaque (avec le getter) et rajouter OU diminuer (1 chance sur 2) 2
+        // lancés de dés en utilisant la constant NB_FACE_DE et mettre à jour l'attaque (avec le setter)
+
+        // Créez une méthode protégée qui va prendre la défense (avec le getter) et rajouter OU diminuer (1 chance sur 2) 1
+        // lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la défense (avec le setter)
+
+        // Créez une méthode protégée qui va prendre la dextérité (avec le getter) et rajouter OU diminuer (3 chance sur
+        // 4 pour rajouter) 1 lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la dextérité (avec le
+        // setter)
 
 
         // Setters - ou mutators
@@ -84,10 +101,13 @@ class Personnage
                 }
             }
 
-            // le genre est optionnel
+            // le genre doit se trouver dans la liste de genre ARRAY_GENRE
             public function setGenre(?string $g): void
             {
-                $this->genre = $g;
+                if(in_array($g,self::ARRAY_GENRE)){
+                    $this->genre = $g;
+                }
+
             }
 
 
@@ -158,16 +178,5 @@ class Personnage
                 return $this->dexterite;
             }
 
-
-
-
-            // fonction publique pour nous dire si un Personnage est vivant ou mort
-            public function isAlive(){
-                if($this->getPointDeVie()<=0){
-                    return $this->getNom(). "est mort !";
-                }else{
-                    return $this->getNom(). "est vivant et a encore {$this->getPointDeVie()} points de vie !";
-                }
-            }
 
 }
