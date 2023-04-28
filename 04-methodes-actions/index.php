@@ -39,7 +39,7 @@ require_once 'Personnage.php';
         ?>
     </select>
 
-    <input type="submit" value="Créer Personnage">
+    <input type="submit" value="Créer un Personnage">
     <?php
     var_dump($_POST);
     ?>
