@@ -84,10 +84,13 @@ class Personnage
                 }
             }
 
-            // le genre est optionnel
+            // le genre doit se trouver dans la liste de genre ARRAY_GENRE
             public function setGenre(?string $g): void
             {
-                $this->genre = $g;
+                if(in_array($g,self::ARRAY_GENRE)){
+                    $this->genre = $g;
+                }
+
             }
 
 
@@ -158,16 +161,5 @@ class Personnage
                 return $this->dexterite;
             }
 
-
-
-
-            // fonction publique pour nous dire si un Personnage est vivant ou mort
-            public function isAlive(){
-                if($this->getPointDeVie()<=0){
-                    return $this->getNom(). "est mort !";
-                }else{
-                    return $this->getNom(). "est vivant et a encore {$this->getPointDeVie()} points de vie !";
-                }
-            }
 
 }
