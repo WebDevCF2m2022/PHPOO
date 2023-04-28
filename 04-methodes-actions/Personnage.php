@@ -66,6 +66,24 @@ class Personnage
             // appel la méthode protégée qui initialise la dextérité
         }
 
+        // fonction publique qui lance les dés
+        public function lanceDes(int $des=1):array{
+            // sortie numérique pour le return
+            $nb = 0;
+            // sortie en tableau pour le tracing des actions
+            $sortie = [];
+            // tant que l'on a des dés
+            for($i=0;$i<$des;$i++){
+                // on lance un dés
+                $lance = mt_rand(1,self::NB_FACE_DE);
+                // on ajoute à la valeur de sortie finale
+                $nb += $lance;
+                // tracing (non obligatoire) pour garder les lancés de dés
+                $sortie[$i]="Lancé : $lance/".self::NB_FACE_DE;
+            }
+            $sortie['total'] = $nb;
+            return $sortie;
+        }
 
         // Créez une méthode protégée qui va prendre les points de vie (avec le getter) et rajouter 3 lancés de dés
         // en utilisant la constant NB_FACE_DE et mettre à jour les points de vie (avec le setter)

@@ -48,6 +48,10 @@ if(isset($_POST['nom'],$_POST['genre'],$_POST['type'])){
 
     <input type="submit" value="Créer un Personnage">
     <?php
+    // si $perso est un objet
+    if(is_object($perso)){
+        var_dump($perso->lanceDes(3));
+    }
     var_dump($_POST,$perso);
     ?>
 </body>
