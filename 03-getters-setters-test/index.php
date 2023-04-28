@@ -13,7 +13,7 @@ require_once "Personnage.php";
     <h1>Getters et setters</h1>
     <h2>Utilisation d'une classe Personnage</h2>
     <?php
-    $joueur1 = new Personnage("Humain","Luc");
+    $joueur1 = new Personnage("Humains","Luc","H");
     $joueur2 = new Personnage("Elf","Luka","Homme");
 
     var_dump($joueur1,$joueur2);
