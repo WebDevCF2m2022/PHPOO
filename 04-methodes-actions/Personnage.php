@@ -1,5 +1,24 @@
 <?php
 
+/**
+ * Class Personnage
+ *
+ * Cette classe représente un personnage de jeu vidéo:
+ *
+ * Un personnage est caractérisé par :
+ *
+ * - un type (humains, elfes, nains, orcs, gobelins)
+ * - un nom (entre 3 et 18 caractères)
+ * - un genre (masculin, féminin, non genré, autre)
+ * - des points de vie (1000 par défaut)
+ * - une attaque (100 par défaut)
+ * - une défense (100 par défaut)
+ * - une dextérité (100 par défaut)
+ * - un tableau de dés (12 par défaut)
+ *
+ * Les attributs sont en protected, ce qui signifie qu'ils ne sont pas accessibles depuis l'extérieur de la classe,
+ * sauf pour les classes qui héritent de cette classe.
+ */
 class Personnage
 {
     // Attributs - protected : comme private, impossible d'y accéder ou de le modifier depuis l'extérieur de
@@ -23,13 +42,20 @@ class Personnage
         'Orcs',
         'Gobelins',
     ];
+    public const ARRAY_GENRE= [
+        'Masculin',
+        'Féminin',
+        'Non genré',
+        'Autre',
+    ];
 
 
     // Méthodes - fonctions avec visibilité et isolation
 
         // Constructeur - Public, appelé lors de l'instanciation de la classe
-        public function __construct(string $typage, string $name, string $gender = "")
+        public function __construct(string $typage, string $name, string $gender)
         {
+            // utilisation des setters pour vérifier les données et les affecter aux attributs
             $this->setType($typage);
             $this->setNom($name);
             $this->setGenre($gender);

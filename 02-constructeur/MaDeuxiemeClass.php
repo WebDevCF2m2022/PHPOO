@@ -25,9 +25,10 @@ class MaDeuxiemeClass{
         $this->premierAttribut = $first;
         $this->deuxiemeAttribut = $second;
 
+
     }
 
-    public  function helloWorld(){
+    public  function helloWorld():string{
         return "Hello World !";
     }
 }
