@@ -1,6 +1,13 @@
 <?php
 // chargement de la classe Personnage
 require_once 'Personnage.php';
+// pour la var_dump, création de la variable $perso
+$perso = null;
+// on va tester si le formulaire a été soumis
+if(isset($_POST['nom'],$_POST['genre'],$_POST['type'])){
+    // on va instancier un objet Personnage avec les données du formulaire passées en POST au constructeur
+    $perso = new Personnage($_POST['type'],$_POST['nom'],$_POST['genre']);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,7 +48,7 @@ require_once 'Personnage.php';
 
     <input type="submit" value="Créer un Personnage">
     <?php
-    var_dump($_POST);
+    var_dump($_POST,$perso);
     ?>
 </body>
 </html>
