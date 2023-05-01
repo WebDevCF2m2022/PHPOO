@@ -64,6 +64,7 @@ class Personnage
             // appel la méthode protégée qui initialise l'attaque
             $this->initAttaque();
             // appel la méthode protégée qui initialise la défense
+            $this->initDefense();
             // appel la méthode protégée qui initialise la dextérité
         }
 
@@ -118,6 +119,21 @@ class Personnage
 
         // Créez une méthode protégée qui va prendre la défense (avec le getter) et rajouter OU diminuer (1 chance sur 2) 1
         // lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la défense (avec le setter)
+        protected function initDefense(){
+            // On prend la défense avec le getter
+            $def = $this->getDefense();
+            // On lance un hasard à 2 possibilités pour savoir si on ajoute ou on enlève 1 dé
+            $lance = mt_rand(1,2);
+            // Si on a 1, on enlève
+            if($lance == 1){
+                $def -= $this->lanceDes(1)['total'];
+            }else{
+                // Sinon on ajoute
+                $def += $this->lanceDes(1)['total'];
+            }
+            // On modifie la défense avec le setter
+            $this->setDefense($def);
+        }
 
         // Créez une méthode protégée qui va prendre la dextérité (avec le getter) et rajouter OU diminuer (3 chance sur
         // 4 pour rajouter) 1 lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la dextérité (avec le
