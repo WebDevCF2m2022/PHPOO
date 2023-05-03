@@ -87,8 +87,8 @@ class Personnage
             $this->createTime= time();
         }
 
-        // fonction publique qui lance les dés
-        public function lanceDes(int $des=1):array{
+        // fonction publique qui lance les dés qui n'a pas besoin d'être instanciée pour fonctionner !
+       public function lanceDes(int $des=1):array{
             // sortie numérique pour le return
             $nb = 0;
             // sortie en tableau pour le tracing des actions
