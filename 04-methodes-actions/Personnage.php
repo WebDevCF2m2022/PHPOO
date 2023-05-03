@@ -18,6 +18,19 @@
  *
  * Les attributs sont en protected, ce qui signifie qu'ils ne sont pas accessibles depuis l'extérieur de la classe,
  * sauf pour les classes qui héritent de cette classe.
+ *
+ * Les constantes sont en public, ce qui signifie qu'elles sont accessibles depuis l'extérieur de la classe.
+ *
+ * Le constructeur de la classe permet d'instancier un objet Personnage en lui passant en paramètre 3 valeurs :
+ * - le nom
+ * - le genre
+ * - le type
+ *
+ * Le constructeur initialise les autres attributs avec des méthodes protégées.
+ *
+ * Les setters permettent de modifier les attributs de l'objet Personnage en vérifiant les données passées en paramètre.
+ *
+ * Les getters permettent de récupérer les attributs de l'objet Personnage.
  */
 class Personnage
 {
@@ -59,13 +72,13 @@ class Personnage
             $this->setType($typage);
             $this->setNom($name);
             $this->setGenre($gender);
-            // appel la méthode protégée qui initialise les points de vie
+            // appel la méthode protégée qui initialise les points de vie (1000 par défaut auquel on ajoute 20 jets de dé)
             $this->initPointDeVie();
-            // appel la méthode protégée qui initialise l'attaque
+            // appel la méthode protégée qui initialise l'attaque (100 par défaut auquel on ajoute/diminue avec 1 chance sur 2 de 2 jets de dé)
             $this->initAttaque();
-            // appel la méthode protégée qui initialise la défense
+            // appel la méthode protégée qui initialise la défense (100 par défaut auquel on ajoute/diminue avec 1 chance sur 2 de 1 jet de dé)
             $this->initDefense();
-            // appel la méthode protégée qui initialise la dextérité
+            // appel la méthode protégée qui initialise la dextérité (100 par défaut auquel on ajoute/diminue avec 3 chances sur 4 de 1 jet de dé)
             $this->initDexterite();
         }
 
@@ -136,9 +149,7 @@ class Personnage
             $this->setDefense($def);
         }
 
-        // Créez une méthode protégée qui va prendre la dextérité (avec le getter) et rajouter OU diminuer (3 chances sur
-        // 4 pour rajouter) 1 lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la dextérité (avec le
-        // setter)
+        // Créez une méthode protégée qui va prendre la dextérité (avec le getter) et rajouter OU diminuer (3 chances sur 4 pour rajouter) 1 lancé de dés en utilisant la constante NB_FACE_DE et mettre à jour la dextérité (avec le setter)
         protected function initDexterite(){
             // On prend la dextérité avec le getter
             $dex = $this->getDexterite();
