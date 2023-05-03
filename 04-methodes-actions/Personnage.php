@@ -18,6 +18,19 @@
  *
  * Les attributs sont en protected, ce qui signifie qu'ils ne sont pas accessibles depuis l'extérieur de la classe,
  * sauf pour les classes qui héritent de cette classe.
+ *
+ * Les constantes sont en public, ce qui signifie qu'elles sont accessibles depuis l'extérieur de la classe.
+ *
+ * Le constructeur de la classe permet d'instancier un objet Personnage en lui passant en paramètre 3 valeurs :
+ * - le nom
+ * - le genre
+ * - le type
+ *
+ * Le constructeur initialise les autres attributs avec des méthodes protégées.
+ *
+ * Les setters permettent de modifier les attributs de l'objet Personnage en vérifiant les données passées en paramètre.
+ *
+ * Les getters permettent de récupérer les attributs de l'objet Personnage.
  */
 class Personnage
 {
@@ -59,11 +72,14 @@ class Personnage
             $this->setType($typage);
             $this->setNom($name);
             $this->setGenre($gender);
-            // appel la méthode protégée qui initialise les points de vie
+            // appel la méthode protégée qui initialise les points de vie (1000 par défaut auquel on ajoute 20 jets de dé)
             $this->initPointDeVie();
-            // appel la méthode protégée qui initialise l'attaque
-            // appel la méthode protégée qui initialise la défense
-            // appel la méthode protégée qui initialise la dextérité
+            // appel la méthode protégée qui initialise l'attaque (100 par défaut auquel on ajoute/diminue avec 1 chance sur 2 de 2 jets de dé)
+            $this->initAttaque();
+            // appel la méthode protégée qui initialise la défense (100 par défaut auquel on ajoute/diminue avec 1 chance sur 2 de 1 jet de dé)
+            $this->initDefense();
+            // appel la méthode protégée qui initialise la dextérité (100 par défaut auquel on ajoute/diminue avec 3 chances sur 4 de 1 jet de dé)
+            $this->initDexterite();
         }
 
         // fonction publique qui lance les dés
@@ -99,13 +115,56 @@ class Personnage
 
         // Créez une méthode protégée qui va prendre l'attaque (avec le getter) et rajouter OU diminuer (1 chance sur 2) 2
         // lancés de dés en utilisant la constant NB_FACE_DE et mettre à jour l'attaque (avec le setter)
+        protected function initAttaque(){
+            // On prend l'attaque avec le getter
+            $att = $this->getAttaque();
+            // On lance un hasard à 2 possibilités pour savoir si on ajoute ou on enlève les 2 lancés de dés
+            $lance = mt_rand(1,2);
+            // Si on a 1, on enlève
+            if($lance == 1){
+                $att -= $this->lanceDes(2)['total'];
+            }else{
+                // Sinon on ajoute
+                $att += $this->lanceDes(2)['total'];
+            }
+            // On modifie l'attaque avec le setter
+            $this->setAttaque($att);
+        }
 
         // Créez une méthode protégée qui va prendre la défense (avec le getter) et rajouter OU diminuer (1 chance sur 2) 1
         // lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la défense (avec le setter)
+        protected function initDefense(){
+            // On prend la défense avec le getter
+            $def = $this->getDefense();
+            // On lance un hasard à 2 possibilités pour savoir si on ajoute ou on enlève 1 dé
+            $lance = mt_rand(1,2);
+            // Si on a 1, on enlève
+            if($lance == 1){
+                $def -= $this->lanceDes(1)['total'];
+            }else{
+                // Sinon on ajoute
+                $def += $this->lanceDes(1)['total'];
+            }
+            // On modifie la défense avec le setter
+            $this->setDefense($def);
+        }
 
-        // Créez une méthode protégée qui va prendre la dextérité (avec le getter) et rajouter OU diminuer (3 chance sur
-        // 4 pour rajouter) 1 lancé de dés en utilisant la constant NB_FACE_DE et mettre à jour la dextérité (avec le
-        // setter)
+        // Créez une méthode protégée qui va prendre la dextérité (avec le getter) et rajouter OU diminuer (3 chances sur 4 pour rajouter) 1 lancé de dés en utilisant la constante NB_FACE_DE et mettre à jour la dextérité (avec le setter)
+        protected function initDexterite(){
+            // On prend la dextérité avec le getter
+            $dex = $this->getDexterite();
+            // On lance un hasard à 4 possibilités pour savoir si on ajoute ou on enlève 1 dé
+            $lance = mt_rand(1,4);
+            // Si on a 1, on enlève
+            if($lance == 1){
+                $dex -= $this->lanceDes(1)['total'];
+            }else{
+                // Sinon on ajoute
+                $dex += $this->lanceDes(1)['total'];
+            }
+            // On modifie la dextérité avec le setter
+            $this->setDexterite($dex);
+        }
 
 
         // Setters - ou mutators
