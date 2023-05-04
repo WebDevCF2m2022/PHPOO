@@ -42,7 +42,11 @@ Elle a également deux méthodes : une méthode publique methodePublique() qui a
 
 Les propriétés d'une classe peuvent être de différents niveaux d'accessibilité : **public**, **protected** ou **private**. Les méthodes peuvent également être de différents niveaux d'accessibilité. 
 
-Les propriétés et les méthodes publiques sont accessibles depuis l'extérieur de la classe, tandis que les propriétés et les méthodes protégées ne sont accessibles que depuis la classe elle-même et ses sous-classes, et les propriétés et les méthodes privées ne sont accessibles que depuis la classe elle-même.
+- Les propriétés et les méthodes publiques sont accessibles depuis l'extérieur de la classe, ainsi que dans la classe elle-même et ses sous-classes.
+
+- Les propriétés et les méthodes protégées ne sont accessibles que dans la classe elle-même et ses sous-classes.
+
+-Les propriétés et les méthodes privées ne sont accessibles que dans la classe elle-même.
 
 
 #### 1.2. Instanciation d'une classe
