@@ -92,7 +92,7 @@ abstract class Personnage
         }
 
         // fonction publique qui lance les dés qui n'a pas besoin d'être instanciée pour fonctionner !
-       public function lanceDes(int $des=1):array{
+       public static function lanceDes(int $des=1):array{
             // sortie numérique pour le return
             $nb = 0;
             // sortie en tableau pour le tracing des actions

@@ -98,7 +98,13 @@ if(isset($_POST['nom'],$_POST['genre'],$_POST['type'],$_POST['nomp'],$_POST['gen
     {
         // TODO: Implement attaquer() method.
     }</pre></code></p>
+<h2>static</h2>
+<p>Une méthode statique permet d'être appelée comme une constante,
+    sans instanciation de la classe et avec les ::</p>
+<p><code><pre>Personnage::lanceDes()['total']</pre></code></p>
 <?php
+// on va lancer un dé avec la méthode statique lancerDe de la classe Personnage
+echo "<p>Le dé a fait : ".Personnage::lanceDes()['total']."</p>";
 // on va tester si le formulaire a été soumis
 if(!is_null($guerrier) && !is_null($mage)){
     $mageAttaqueGuerrier = $mage->attaquer($guerrier);
