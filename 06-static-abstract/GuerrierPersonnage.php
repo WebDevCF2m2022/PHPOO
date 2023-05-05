@@ -24,6 +24,19 @@ public function __construct(string $typage, string $name, string $gender = "")
         $this->setRage($this->getRage() + (5 * random_int(1, self::NB_FACE_DE)));
     }
 
+    // redéfinition de la méthode attaquer qui vient du parent Personnage
+    public function attaquer(Personnage $cible): array
+    {
+        $pointsAttaque = $this->getPuissance() + $this->getRage();
+        $sortie['nom'] = $this->getNom();
+        $sortie['attaqueDeBase'] = $pointsAttaque;
+        $sortie['attaqueCourante']= parent::lanceDes($this->getDexterite());
+        $sortie['attaqueTotale'] = $sortie['attaqueDeBase'] + $sortie['attaqueCourante']['total'];
+        return $sortie;
+
+    }
+
+    // Setters et Getters
     public function getRage(): int
     {
         return $this->rage;

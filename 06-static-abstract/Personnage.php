@@ -48,7 +48,7 @@ abstract class Personnage
     protected $pointDeVie = 1000;
     protected $puissance = 100;
     protected $defense = 100;
-    protected $dexterite = 100;
+    protected $dexterite = 35;
     protected $experience = 0;
 
     // Constantes
@@ -287,4 +287,10 @@ abstract class Personnage
             {
                 return $this->experience;
             }
+
+            // création d'une méthode abstract pour forcer les classes filles à l'utiliser
+            // elle prend en paramètre un objet de type Personnage
+            // Attention, une méthode abstract ne peut pas avoir de corps et ne peut
+            // se trouver que dans une classe abstract
+            abstract public function attaquer(Personnage $cible): ?array;
 }

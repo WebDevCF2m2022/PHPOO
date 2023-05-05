@@ -17,7 +17,7 @@ if(isset($_POST['nom'],$_POST['genre'],$_POST['type'],$_POST['nomp'],$_POST['gen
     // on va instancier un objet MagePersonnage avec les données du formulaire passées en POST au constructeur
     $mage = new MagePersonnage($_POST['type'],$_POST['nom'],$_POST['genre']);
     // ceci est impossible car la classe Personnage est abstraite
-    $perso =  new Personnage($_POST['type'],$_POST['nom'],$_POST['genre']);
+    // $perso =  new Personnage($_POST['type'],$_POST['nom'],$_POST['genre']);
 }
 ?>
 <!doctype html>
@@ -85,7 +85,39 @@ if(isset($_POST['nom'],$_POST['genre'],$_POST['type'],$_POST['nomp'],$_POST['gen
 
     <input type="submit" value="Créer un Guerrier et un Mage">
 </form>
-    <h5>var_dump($_POST,$perso);</h5>
+<h2>classes abstraites</h2>
+<p>Une classe abstraite est une classe qui ne peut pas être instanciée</p>
+<p><code>abstract class Personnage</code></p>
+<h3>Un méthode abstraite </h3>
+<p>Une méthode abstraite est une méthode qui n'a pas de corps, ses enfants devront redéfinir la méthode</p>
+<h4>Une méthode abstraite ne peut être créée que dans une classe abstraite</h4>
+<p><code>abstract public function attaquer(Personnage $perso)</code></p>
+<h3>Redéclaration dans les enfants</h3>
+<p><code><pre>    // redéfinition de la méthode attaquer qui vient du parent Personnage
+    public function attaquer(Personnage $cible): void
+    {
+        // TODO: Implement attaquer() method.
+    }</pre></code></p>
+<?php
+// on va tester si le formulaire a été soumis
+if(!is_null($guerrier) && !is_null($mage)){
+    $mageAttaqueGuerrier = $mage->attaquer($guerrier);
+    $guerrierAttaqueMage = $guerrier->attaquer($mage);
+    echo "<h3>Le Mage attaque le Guerrier</h3>";
+    echo "<p>{$mageAttaqueGuerrier['attaqueTotale']}</p>";
+    echo "<h3>Le Guerrier attaque le Mage</h3>";
+    echo "<p>{$guerrierAttaqueMage['attaqueTotale']}</p>";
+    }
+?>
+<h5>var_dump($mageAttaqueGuerrier);</h5>
+<?php
+var_dump($mageAttaqueGuerrier);
+?>
+<h5>var_dump($guerrierAttaqueMage);</h5>
+<?php
+var_dump($guerrierAttaqueMage);
+?>
+    <h5>var_dump($_POST,$guerrier,$mage);</h5>
     <?php
     var_dump($_POST,$guerrier,$mage);
     // création de fichier textes pour stocker les données OU
