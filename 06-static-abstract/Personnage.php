@@ -289,8 +289,8 @@ abstract class Personnage
             }
 
             // création d'une méthode abstract pour forcer les classes filles à l'utiliser
-            // elle prend en paramètre un objet de type Personnage
+            // Elle prend en paramètre un objet de type Personnage
             // Attention, une méthode abstract ne peut pas avoir de corps et ne peut
             // se trouver que dans une classe abstract
-            abstract public function attaquer(Personnage $cible): ?array;
+            abstract function attaquer(Personnage $cible): ?array;
 }

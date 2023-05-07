@@ -103,6 +103,7 @@ if(isset($_POST['nom'],$_POST['genre'],$_POST['type'],$_POST['nomp'],$_POST['gen
     sans instanciation de la classe et avec les ::</p>
 <p><code><pre>Personnage::lanceDes()['total']</pre></code></p>
 <?php
+
 // on va lancer un dé avec la méthode statique lancerDe de la classe Personnage
 echo "<p>Le dé a fait : ".Personnage::lanceDes()['total']."</p>";
 // on va tester si le formulaire a été soumis
@@ -114,6 +115,7 @@ if(!is_null($guerrier) && !is_null($mage)){
     echo "<h3>Le Guerrier attaque le Mage</h3>";
     echo "<p>{$guerrierAttaqueMage['attaqueTotale']}</p>";
     }
+
 ?>
 <h5>var_dump($mageAttaqueGuerrier);</h5>
 <?php
