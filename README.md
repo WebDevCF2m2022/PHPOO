@@ -289,9 +289,12 @@ class MaClasse {
     ###
 
     // Méthodes
-    public function __construct($param1, $param2,$param3) {
-        $this->setProprietePrivee=$param1;
-        $this->proprieteProtegee=$param2;
+    public function __construct($param1, $param2, $param3) {
+        // utilisation des setters pour modifier les valeurs des propriétés,
+        // ce qui permet de vérifier les valeurs
+        $this->setProprietePrivee($param1);
+        $this->setProprieteProtegee($param2);
+        // inutile d'utiliser un setter pour modifier la propriété publique
         $this->proprietePublique=$param3;
     }
     
@@ -322,6 +325,30 @@ class MaClasse {
     ###
 }
 ```
+
+#### 1.10.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe
+
+```php
+// Création d'un objet de la classe MaClasse
+$monObjet = new MaClasse('valeur1', 'valeur2', 'valeur3');
+// affichage de la valeur de la propriété publique
+echo $monObjet->proprietePublique;
+// affichage des valeurs de la propriété privée et de la propriété protégée
+echo $monObjet->getProprietePrivee();
+echo $monObjet->getProprieteProtegee();
+```
+#### 1.10.3 Utilisation des setters pour modifier des valeurs en dehors de la classe
+
+```php
+// Création d'un objet de la classe MaClasse
+$monObjet = new MaClasse('valeur1', 'valeur2', 'valeur3');
+// modification de la valeur de la propriété publique
+$monObjet->proprietePublique = 'Nouvelle valeur';
+// modification des valeurs de la propriété privée et de la propriété protégée
+$monObjet->setProprietePrivee('Nouvelle valeur');
+$monObjet->setProprieteProtegee('Nouvelle valeur');
+```
+
 
 #### 1.11. Les classes abstraites
 
