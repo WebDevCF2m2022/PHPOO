@@ -4,13 +4,13 @@
 
 ### 1. Les classes et les objets
 
-**Définition** : Une **classe** est une structure qui permet de définir des objets. Une classe est un modèle+ qui décrit les caractéristiques communes d'un groupe d'objets.
+**Définition** : Une **classe** est une structure qui permet de définir des objets. Une classe est un modèle qui décrit les caractéristiques communes d'un groupe d'objets.
 
 Un **objet** est une **instance d'une classe**. Un objet est une entité qui possède des propriétés, des constantes et des méthodes.
 
 #### 1.1. Déclaration d'une classe
 
-La déclaration d'une classe en PHP commence par le mot clé class, suivi du nom de la classe et de son contenu entre accolades. Voici un exemple de déclaration de classe en PHP
+La déclaration d'une classe en PHP commence par le mot clé `class`, suivi du nom de la classe et de son contenu entre accolades. Voici un exemple de déclaration de classe en PHP
 
 ```php
 class MaClasse {
@@ -32,11 +32,11 @@ class MaClasse {
 }
 ```
 
-Dans cet exemple, la classe s'appelle MaClasse. Elle a deux propriétés : une propriété privée $proprietePrivee et une propriété publique $proprietePublique initialisée à 'Valeur par défaut'. 
+Dans cet exemple, la classe s'appelle MaClasse. Elle a deux propriétés : une propriété privée `$proprietePrivee` et une propriété publique `$proprietePublique` initialisée à 'Valeur par défaut'. 
 
-Elle a également une constante MA_CONSTANTE initialisée à 'Valeur constante'. Elle est accessible depuis l'extérieur de la classe en utilisant le nom de la classe suivi de l'opérateur de résolution de portée `::` et du nom de la constante. 
+Elle a également une constante `MA_CONSTANTE` initialisée à 'Valeur constante'. Elle est accessible depuis l'extérieur de la classe en utilisant le nom de la classe suivi de l'opérateur de résolution de portée `::` et du nom de la constante. 
 
-Par exemple, pour accéder à la constante MA_CONSTANTE depuis l'extérieur de la classe, on écrira 
+Par exemple, pour accéder à la constante `MA_CONSTANTE` depuis l'extérieur de la classe, on écrira :
 
 ```php
 echo MaClasse::MA_CONSTANTE;
@@ -44,21 +44,28 @@ echo MaClasse::MA_CONSTANTE;
 
 #### 1.1.2 La visibilité des propriétés et des méthodes
 
-Elle a également deux méthodes : une méthode publique methodePublique() qui affiche une chaîne de caractères, et une méthode privée methodePrivee() qui affiche également une chaîne de caractères.
+Elle a également deux méthodes : une méthode publique `methodePublique()` qui affiche une chaîne de caractères et une méthode privée `methodePrivee()` qui affiche également une chaîne de caractères.
 
-Les propriétés d'une classe peuvent être de différents niveaux d'accessibilité : **public**, **protected** ou **private**. Les méthodes peuvent également être de différents niveaux d'accessibilité. 
+Les propriétés d'une classe peuvent être de différents niveaux d'accessibilité : `public`, `protected` ou `private`. Les méthodes peuvent également être de différents niveaux d'accessibilité. 
 
-- **public** Les propriétés et les méthodes publiques sont accessibles depuis l'extérieur de la classe, ainsi que dans la classe elle-même et ses sous-classes.
+- **public** 
 
-- **protected** Les propriétés et les méthodes protégées ne sont accessibles que dans la classe elle-même et ses sous-classes.
+Les propriétés et les méthodes publiques sont accessibles depuis l'extérieur de la classe, ainsi que dans la classe elle-même et ses sous-classes.
 
-- **private** Les propriétés et les méthodes privées ne sont accessibles que dans la classe elle-même.
+- **protected** 
+
+Les propriétés et les méthodes protégées ne sont accessibles que dans la classe elle-même et ses sous-classes.
+
+- **private** 
+
+Les propriétés et les méthodes privées ne sont accessibles que dans la classe elle-même.
+
 
 Nous verrons plus loin l'utilité de ces différents niveaux d'accessibilité.
 
 #### 1.2. Instanciation d'une classe
 
-Il est important de noter que la déclaration d'une classe en PHP ne crée pas directement un objet. Une classe est simplement une structure qui décrit les propriétés et les méthodes d'un objet. Pour **créer un objet** à partir d'une classe, vous devez **instancier** la classe en utilisant le mot clé **new**, comme ceci :
+Il est important de noter que la déclaration d'une classe en PHP ne crée pas directement un objet. Une classe est simplement une structure qui décrit les propriétés et les méthodes d'un objet. Pour **créer un objet** à partir d'une classe, vous devez **instancier** la classe en utilisant le mot clé `new`, comme ceci :
 
 ```php
 $objet = new MaClasse();
@@ -66,18 +73,10 @@ $objet = new MaClasse();
 
 Dans cet exemple, nous avons instancié la classe MaClasse et stocké l'objet dans la variable $objet.
 
-#### 1.3. Accès aux propriétés et aux méthodes d'un objet
 
-Une fois que vous avez instancié une classe, vous pouvez accéder à ses propriétés et à ses méthodes publiques en utilisant l'opérateur de flèche ->, comme ceci :
+#### 1.3. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe
 
-```php
-echo $objet->proprietePublique;
-echo $objet->methodePublique();
-```
-
-#### 1.4. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe
-
-Lorsque vous êtes à l'intérieur d'une classe, vous pouvez accéder à ses propriétés et à ses méthodes en utilisant **self** et l'opérateur de résolution de portée **::**, ou le **$this** si la classe est instanciée :
+Lorsque vous êtes à l'intérieur d'une classe, vous pouvez accéder à ses propriétés et à ses méthodes en utilisant `self` et l'opérateur de résolution de portée `::`, ou le `$this` **si la classe est instanciée** :
 
 ```php
 class MaClasse {
@@ -107,9 +106,9 @@ class MaClasse {
 }
 ```
 
-#### 1.5. Accès aux propriétés et aux méthodes d'une classe depuis l'extérieur de la classe
+#### 1.4. Accès aux propriétés et aux méthodes publiques d'une classe depuis l'extérieur de la classe pour lecture ET modification
 
-Lorsque vous êtes à l'extérieur d'une classe, vous pouvez accéder à ses propriétés et à ses méthodes publiques en utilisant l'opérateur de flèche ->, comme ceci :
+Lorsque vous êtes à l'extérieur d'une classe, vous pouvez accéder à ses propriétés et à ses méthodes publiques en utilisant l'opérateur de flèche `->`, comme ceci :
 
 ```php
 echo $objet->proprietePublique;
@@ -122,11 +121,19 @@ echo $objet->methodePublique();
 $objet->proprietePublique = 'Nouvelle valeur';
 ```
 
-#### 1.6 Les constructeurs
+Nous pouvons même créer une propriété publique à la volée, même si elle n'existe pas dans la classe :
+
+```php
+$objet->proprietePublique2 = 'Valeur';
+```
+
+**Ceci est une mauvaise pratique**, car cela peut créer des erreurs dans le code. Il est parfois pratique de pouvoir le faire, mais il est préférable de déclarer toutes les propriétés dans la classe et empêcher l'ajout de propriétés à la volée (nous verrons cela plus loin dans le cours).
+
+#### 1.5 Les constructeurs
 
 Le constructeur est une méthode spéciale (méthode magique) qui est appelée automatiquement lorsqu'un objet est instancié. Le constructeur est généralement utilisé pour initialiser les propriétés d'un objet.
 
-Le constructeur d'une classe est défini en créant une méthode avec le nom __construct() :
+Le constructeur d'une classe est défini en créant une méthode avec le nom `__construct()` :
 
 ```php
 class MaClasse {
@@ -166,7 +173,7 @@ class MaClasse {
 
 Nous utiliserons plus souvent les getters et les setters pour accéder aux propriétés d'une classe.
 
-#### 1.7 Les autres méthodes magiques
+#### 1.6 Les autres méthodes magiques
 
 PHP propose d'autres méthodes magiques qui permettent de gérer les objets. Vous pouvez les retrouver ici :
 
@@ -174,13 +181,13 @@ https://www.php.net/manual/fr/language.oop5.magic.php
 
 Nous les verrons au fur et à mesure de nos besoins.
 
-#### 1.8. Les getters et les setters
+#### 1.7. Les getters et les setters
 
 Les getters et les setters sont utilisés pour accéder aux propriétés d'une classe.
 
-Un **getter** est une méthode qui permet d'accéder à une propriété privée ou protégée.
+Un `getter` est une méthode qui permet d'accéder à une propriété privée ou protégée.
 
-Un **setter** est une méthode qui permet de modifier une propriété privée ou protégée.
+Un `setter` est une méthode qui permet de modifier une propriété privée ou protégée.
 
 Les bonnes pratiques de programmation orientée objet recommandent de rendre les propriétés privées (ou protégées) et d'utiliser des getters et des setters pour accéder à ces propriétés.
 
@@ -233,7 +240,7 @@ class MaClasse {
 }
 ```
 
-#### 1.8.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe
+#### 1.7.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe
 
 ```php
 // Création d'un objet de la classe MaClasse
@@ -244,7 +251,7 @@ echo $monObjet->proprietePublique;
 echo $monObjet->getProprietePrivee();
 echo $monObjet->getProprieteProtegee();
 ```
-#### 1.8.3 Utilisation des setters pour modifier des valeurs en dehors de la classe
+#### 1.7.3 Utilisation des setters pour modifier des valeurs en dehors de la classe
 
 ```php
 // Création d'un objet de la classe MaClasse
@@ -256,13 +263,13 @@ $monObjet->setProprietePrivee('Nouvelle valeur');
 $monObjet->setProprieteProtegee('Nouvelle valeur');
 ```
 
-#### 1.9. L'héritage
+#### 2. L'héritage
 
 L'héritage est un concept de programmation orientée objet qui permet à une classe d'hériter des propriétés et des méthodes d'une autre classe.
 
 Une classe qui hérite d'une autre classe est appelée **classe enfant** ou **classe dérivée**. La classe dont la classe enfant hérite est appelée **classe parente** ou **classe de base**.
 
-Pour hériter d'une classe, utilisez le mot clé **extends** :
+Pour hériter d'une classe, utilisez le mot clé `extends` :
 
 ```php
 class MaClasseEnfant extends MaClasse {
@@ -270,19 +277,19 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
-#### 1.9.2. L'héritage multiple
+#### 2.2. L'héritage multiple
 
 PHP ne supporte pas l'héritage multiple, c'est-à-dire qu'une classe ne peut hériter que d'une seule classe parente. Cependant, il est possible d'implémenter plusieurs interfaces (nous le verrons plus loin).
 
-#### 1.9.3. L'héritage et la visibilité
+#### 2.3. L'héritage et la visibilité
 
 Lorsque vous héritez d'une classe, vous héritez de toutes ses propriétés et de toutes ses méthodes, mais pas de sa visibilité. Les propriétés et les méthodes privées ne peuvent pas être héritées, mais les propriétés et les méthodes protégées ou publiques peuvent l'être.
 
-#### 1.9.4. L'héritage et les visibilités des méthodes et des propriétés
+#### 2.4. L'héritage et les visibilités des méthodes et des propriétés
 
 Lorsque vous héritez d'une classe, vous pouvez modifier la visibilité des méthodes et des propriétés héritées. Cependant, vous ne pouvez pas rendre une propriété privée ou une méthode protégée publique.
 
-##### 1) Les méthodes et les propriétés privées
+##### 2.4. Les méthodes et les propriétés privées
 
 Les méthodes et les propriétés privées ne peuvent pas être héritées, donc elles ne peuvent pas être modifiées depuis la classe enfant.
 
@@ -296,7 +303,7 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
-##### 2) Les méthodes et les propriétés protégées
+##### 2.4.2 Les méthodes et les propriétés protégées
 
 Les méthodes et les propriétés protégées peuvent être héritées et modifiées depuis la classe enfant.
     
@@ -309,7 +316,7 @@ class MaClasseEnfant extends MaClasse {
 ```
 
 
-##### 3) Les méthodes et les propriétés publiques
+##### 2.4.3 Les méthodes et les propriétés publiques
 
 Les méthodes et les propriétés publiques peuvent être héritées et modifiées depuis la classe enfant.
 
@@ -321,7 +328,7 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
-#### 1.10. La surcharge
+#### 2.5. La surcharge
 
 La surcharge est un concept de programmation orientée objet qui permet à une classe enfant de redéfinir une méthode d'une classe parente. La surcharge est utilisée pour remplacer une méthode héritée par une nouvelle méthode.
 
@@ -336,7 +343,7 @@ class MaClasseEnfant extends MaClasseParent {
 }
 ```
 
-Pour récupérer la méthode de la classe parente, utilisez le mot clé **parent** :
+Pour récupérer la méthode de la classe parente, utilisez le mot clé `parent` :
 
 ```php
 class MaClasseEnfant extends MaClasseParent {
@@ -349,14 +356,11 @@ class MaClasseEnfant extends MaClasseParent {
 ```
 
 
-
-
-
-#### 1.11. Les classes abstraites
+#### 2.6. Les classes abstraites
 
 Une classe abstraite est une classe qui ne peut pas être instanciée. Elle est utilisée pour définir des méthodes et des propriétés qui seront héritées par des classes enfants.
 
-Pour définir une classe abstraite, utilisez le mot clé **abstract** :
+Pour définir une classe abstraite, utilisez le mot clé `abstract` :
 
 ```php
 abstract class MaClasseAbstraite {
@@ -366,7 +370,7 @@ abstract class MaClasseAbstraite {
 
 Une classe abstraite peut contenir des méthodes abstraites et des méthodes non abstraites.
 
-Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé **abstract** et ne peut pas être définie avec les mots clés **private**, **protected** ou **final**.
+Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé `abstract` et ne peut pas être définie avec les mots clés `private`, `protected` ou `final` (final sera abordé plus loin).
 
 ```php
 abstract class MaClasseAbstraite {
@@ -391,11 +395,11 @@ class MaClasseEnfant extends MaClasseAbstraite {
 }
 ```
 
-#### 1.12. Les méthodes et les propriétés statiques
+#### 2.7. Les méthodes et les propriétés statiques
 
 Une méthode ou une propriété statique est une méthode ou une propriété qui peut être utilisée sans avoir besoin d'instancier la classe.
 
-Pour définir une méthode ou une propriété statique, utilisez le mot clé **static** :
+Pour définir une méthode ou une propriété statique, utilisez le mot clé `static` :
 
 ```php
 class MaClasse {
@@ -409,7 +413,7 @@ class MaClasse {
 }
 ```
 
-Pour accéder à une méthode ou une propriété statique, utilisez le nom de la classe suivi de l'opérateur **::** :
+Pour accéder à une méthode ou une propriété statique, utilisez le nom de la classe suivi de l'opérateur `::` :
 
 ```php
 // Accès à une propriété statique
