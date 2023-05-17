@@ -4,7 +4,7 @@
 
 ### 1. Les classes et les objets
 
-**Définition** : Une **classe** est une structure qui permet de définir des objets. Une classe est un modèle qui décrit les caractéristiques communes d'un groupe d'objets.
+**Définition** : Une **classe** est une structure qui permet de définir des objets. Une classe est un modèle+ qui décrit les caractéristiques communes d'un groupe d'objets.
 
 Un **objet** est une **instance d'une classe**. Un objet est une entité qui possède des propriétés, des constantes et des méthodes.
 
@@ -174,104 +174,11 @@ https://www.php.net/manual/fr/language.oop5.magic.php
 
 Nous les verrons au fur et à mesure de nos besoins.
 
-#### 1.8. L'héritage
-
-L'héritage est un concept de programmation orientée objet qui permet à une classe d'hériter des propriétés et des méthodes d'une autre classe.
-
-Une classe qui hérite d'une autre classe est appelée **classe enfant** ou **classe dérivée**. La classe dont la classe enfant hérite est appelée **classe parente** ou **classe de base**.
-
-Pour hériter d'une classe, utilisez le mot clé **extends** :
-
-```php
-class MaClasseEnfant extends MaClasse {
-    // Code de la classe enfant
-}
-```
-
-#### 1.8.2. L'héritage multiple
-
-PHP ne supporte pas l'héritage multiple, c'est-à-dire qu'une classe ne peut hériter que d'une seule classe parente. Cependant, il est possible d'implémenter plusieurs interfaces (nous le verrons plus loin).
-
-#### 1.8.3. L'héritage et la visibilité
-
-Lorsque vous héritez d'une classe, vous héritez de toutes ses propriétés et de toutes ses méthodes, mais pas de sa visibilité. Les propriétés et les méthodes privées ne peuvent pas être héritées, mais les propriétés et les méthodes protégées ou publiques peuvent l'être.
-
-#### 1.8.4. L'héritage et les visibilités des méthodes et des propriétés
-
-Lorsque vous héritez d'une classe, vous pouvez modifier la visibilité des méthodes et des propriétés héritées. Cependant, vous ne pouvez pas rendre une propriété privée ou une méthode protégée publique.
-
-##### 1) Les méthodes et les propriétés privées
-
-Les méthodes et les propriétés privées ne peuvent pas être héritées, donc elles ne peuvent pas être modifiées depuis la classe enfant.
-
-```php
-class MaClasseEnfant extends MaClasse {
-    // Code de la classe enfant
-    // Impossible de modifier les méthodes et les propriétés privées,
-    // ceci génère une erreur,
-    // ou une nouvelle propriété publique est créée (faille de sécurité que l'on arrivera à corriger)
-    $this->proprietePrivee = 'Nouvelle valeur';
-}
-```
-
-##### 2) Les méthodes et les propriétés protégées
-
-Les méthodes et les propriétés protégées peuvent être héritées et modifiées depuis la classe enfant.
-    
-```php
-class MaClasseEnfant extends MaClasse {
-    // Code de la classe enfant
-    // Les méthodes et les propriétés protégées peuvent être modifiées
-    $this->proprieteProtegee = 'Nouvelle valeur';
-}
-```
-
-
-##### 3) Les méthodes et les propriétés publiques
-
-Les méthodes et les propriétés publiques peuvent être héritées et modifiées depuis la classe enfant.
-
-```php
-class MaClasseEnfant extends MaClasse {
-    // Code de la classe enfant
-    // Les méthodes et les propriétés publiques peuvent être modifiées
-    $this->proprietePublique = 'Nouvelle valeur';
-}
-```
-
-#### 1.9. La surcharge
-
-La surcharge est un concept de programmation orientée objet qui permet à une classe enfant de redéfinir une méthode d'une classe parente. La surcharge est utilisée pour remplacer une méthode héritée par une nouvelle méthode.
-
-La méthode redéfinie doit avoir le même nom, le même nombre de paramètres et la même visibilité. La surcharge peut également être utilisée pour ajouter des paramètres à une méthode héritée.
-
-```php
-class MaClasseEnfant extends MaClasseParent {
-    // Code de la classe enfant qui surcharge la méthode de la classe parente
-    public function methodePublique($param1, $param2) {
-        // Code de la méthode redéfinie
-    }
-}
-```
-
-Pour récupérer la méthode de la classe parente, utilisez le mot clé **parent** :
-
-```php
-class MaClasseEnfant extends MaClasseParent {
-    // Code de la classe enfant qui surcharge la méthode de la classe parente
-    public function methodePublique($param1, $param2) {
-        // Code de la méthode redéfinie
-        parent::methodePublique($param1, $param2);
-    }
-}
-```
-
-
-#### 1.10. Les getters et les setters
+#### 1.8. Les getters et les setters
 
 Les getters et les setters sont utilisés pour accéder aux propriétés d'une classe.
 
-Un **getter** est une méthode qui permet d'accéder à une propriété privée ou protégée. 
+Un **getter** est une méthode qui permet d'accéder à une propriété privée ou protégée.
 
 Un **setter** est une méthode qui permet de modifier une propriété privée ou protégée.
 
@@ -326,7 +233,7 @@ class MaClasse {
 }
 ```
 
-#### 1.10.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe
+#### 1.8.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe
 
 ```php
 // Création d'un objet de la classe MaClasse
@@ -337,7 +244,7 @@ echo $monObjet->proprietePublique;
 echo $monObjet->getProprietePrivee();
 echo $monObjet->getProprieteProtegee();
 ```
-#### 1.10.3 Utilisation des setters pour modifier des valeurs en dehors de la classe
+#### 1.8.3 Utilisation des setters pour modifier des valeurs en dehors de la classe
 
 ```php
 // Création d'un objet de la classe MaClasse
@@ -348,6 +255,101 @@ $monObjet->proprietePublique = 'Nouvelle valeur';
 $monObjet->setProprietePrivee('Nouvelle valeur');
 $monObjet->setProprieteProtegee('Nouvelle valeur');
 ```
+
+#### 1.9. L'héritage
+
+L'héritage est un concept de programmation orientée objet qui permet à une classe d'hériter des propriétés et des méthodes d'une autre classe.
+
+Une classe qui hérite d'une autre classe est appelée **classe enfant** ou **classe dérivée**. La classe dont la classe enfant hérite est appelée **classe parente** ou **classe de base**.
+
+Pour hériter d'une classe, utilisez le mot clé **extends** :
+
+```php
+class MaClasseEnfant extends MaClasse {
+    // Code de la classe enfant
+}
+```
+
+#### 1.9.2. L'héritage multiple
+
+PHP ne supporte pas l'héritage multiple, c'est-à-dire qu'une classe ne peut hériter que d'une seule classe parente. Cependant, il est possible d'implémenter plusieurs interfaces (nous le verrons plus loin).
+
+#### 1.9.3. L'héritage et la visibilité
+
+Lorsque vous héritez d'une classe, vous héritez de toutes ses propriétés et de toutes ses méthodes, mais pas de sa visibilité. Les propriétés et les méthodes privées ne peuvent pas être héritées, mais les propriétés et les méthodes protégées ou publiques peuvent l'être.
+
+#### 1.9.4. L'héritage et les visibilités des méthodes et des propriétés
+
+Lorsque vous héritez d'une classe, vous pouvez modifier la visibilité des méthodes et des propriétés héritées. Cependant, vous ne pouvez pas rendre une propriété privée ou une méthode protégée publique.
+
+##### 1) Les méthodes et les propriétés privées
+
+Les méthodes et les propriétés privées ne peuvent pas être héritées, donc elles ne peuvent pas être modifiées depuis la classe enfant.
+
+```php
+class MaClasseEnfant extends MaClasse {
+    // Code de la classe enfant
+    // Impossible de modifier les méthodes et les propriétés privées,
+    // ceci génère une erreur,
+    // ou une nouvelle propriété publique est créée (faille de sécurité que l'on arrivera à corriger)
+    $this->proprietePrivee = 'Nouvelle valeur';
+}
+```
+
+##### 2) Les méthodes et les propriétés protégées
+
+Les méthodes et les propriétés protégées peuvent être héritées et modifiées depuis la classe enfant.
+    
+```php
+class MaClasseEnfant extends MaClasse {
+    // Code de la classe enfant
+    // Les méthodes et les propriétés protégées peuvent être modifiées
+    $this->proprieteProtegee = 'Nouvelle valeur';
+}
+```
+
+
+##### 3) Les méthodes et les propriétés publiques
+
+Les méthodes et les propriétés publiques peuvent être héritées et modifiées depuis la classe enfant.
+
+```php
+class MaClasseEnfant extends MaClasse {
+    // Code de la classe enfant
+    // Les méthodes et les propriétés publiques peuvent être modifiées
+    $this->proprietePublique = 'Nouvelle valeur';
+}
+```
+
+#### 1.10. La surcharge
+
+La surcharge est un concept de programmation orientée objet qui permet à une classe enfant de redéfinir une méthode d'une classe parente. La surcharge est utilisée pour remplacer une méthode héritée par une nouvelle méthode.
+
+La méthode redéfinie doit avoir le même nom, le même nombre de paramètres et la même visibilité. La surcharge peut également être utilisée pour ajouter des paramètres à une méthode héritée.
+
+```php
+class MaClasseEnfant extends MaClasseParent {
+    // Code de la classe enfant qui surcharge la méthode de la classe parente
+    public function methodePublique($param1, $param2) {
+        // Code de la méthode redéfinie
+    }
+}
+```
+
+Pour récupérer la méthode de la classe parente, utilisez le mot clé **parent** :
+
+```php
+class MaClasseEnfant extends MaClasseParent {
+    // Code de la classe enfant qui surcharge la méthode de la classe parente
+    public function methodePublique($param1, $param2) {
+        // Code de la méthode redéfinie
+        parent::methodePublique($param1, $param2);
+    }
+}
+```
+
+
+
 
 
 #### 1.11. Les classes abstraites
