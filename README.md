@@ -424,6 +424,7 @@ echo MaClasse::$proprieteStatique;
 echo MaClasse::methodeStatique();
 ```
 
+
 ## A faire
 
 #### 2.8. Les interfaces
@@ -479,5 +480,265 @@ Une interface peut hériter d'une ou plusieurs interfaces. Dans ce cas, les inte
 ```php
 interface MaInterfaceEnfant extends MaInterfaceParent1, MaInterfaceParent2 {
     // Code de l'interface enfant
+}
+```
+
+## 3. Les traits
+
+Un trait est un ensemble de méthodes qui peut être utilisé par plusieurs classes. Il est utilisé pour définir des méthodes qui seront utilisées par plusieurs classes.
+
+Pour définir un trait, utilisez le mot clé `trait` :
+
+```php
+trait MonTrait {
+    // Code du trait
+}
+```
+
+Un trait peut contenir des méthodes abstraites et des méthodes non abstraites. Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé `abstract` et ne peut pas être définie avec les mots clés `private`, `protected` ou `final` (final sera abordé plus loin).
+
+```php
+trait MonTrait {
+    // Méthode abstraite
+    abstract public function methodeAbstraite();
+    
+    // Méthode non abstraite
+    public function methodeNonAbstraite() {
+        // Code de la méthode non abstraite
+    }
+}
+```
+
+Un trait peut être utilisé par une classe. Pour utiliser un trait, utilisez le mot clé `use` :
+
+```php
+class MaClasse {
+    // Utilisation du trait
+    use MonTrait;
+}
+```
+
+Un trait peut être utilisé par plusieurs classes. Un trait peut également utiliser un autre trait.
+
+```php
+
+trait MonTrait1 {
+    // Code du trait 1
+}
+
+trait MonTrait2 {
+    // Code du trait 2
+}
+
+trait MonTrait3 {
+    // Code du trait 3
+    use MonTrait1, MonTrait2;
+}
+
+class MaClasse1 {
+    // Utilisation du trait 1
+    use MonTrait1;
+}
+
+class MaClasse2 {
+    // Utilisation du trait 2
+    use MonTrait2;
+}
+
+class MaClasse3 {
+    // Utilisation du trait 3
+    use MonTrait3;
+}
+```
+
+## 4. Les namespaces
+
+Un namespace est un moyen d'encapsuler des éléments. Il est utilisé pour éviter les conflits de noms entre les classes, les fonctions et les constantes.
+
+Pour définir un namespace, utilisez le mot clé `namespace` :
+
+```php
+namespace MonNamespace;
+```
+
+Un namespace peut contenir des classes, des fonctions et des constantes.
+
+```php
+namespace MonNamespace;
+
+class MaClasse {
+    // Code de la classe
+}
+
+function maFonction() {
+    // Code de la fonction
+}
+
+const MA_CONSTANTE = 'Valeur de la constante';
+```
+
+Un namespace peut être utilisé par une classe, une fonction ou une constante. Pour utiliser un namespace, utilisez le mot clé `use` :
+
+```php
+namespace MonNamespace;
+
+// Utilisation du namespace
+use MonNamespace;
+
+class MaClasse {
+    // Utilisation du namespace
+    use MonNamespace;
+}
+
+function maFonction() {
+    // Utilisation du namespace
+    use MonNamespace;
+}
+
+// Utilisation du namespace
+
+use MonNamespace;
+
+echo MA_CONSTANTE;
+```
+
+Un namespace peut être utilisé par plusieurs classes, fonctions ou constantes.
+
+```php
+namespace MonNamespace;
+
+// Utilisation du namespace
+
+use MonNamespace;
+
+class MaClasse1 {
+    // Utilisation du namespace
+    use MonNamespace;
+}
+
+class MaClasse2 {
+    // Utilisation du namespace
+    use MonNamespace;
+}
+
+function maFonction1() {
+    // Utilisation du namespace
+    use MonNamespace;
+}
+
+function maFonction2() {
+    // Utilisation du namespace
+    use MonNamespace;
+}
+
+echo MA_CONSTANTE;
+```
+
+## 5. Auto-chargement des classes
+
+L'auto-chargement des classes est utilisé pour charger automatiquement les classes. Il est utilisé pour éviter d'avoir à inclure manuellement les fichiers de classe.
+
+Pour définir une fonction d'auto-chargement, utilisez la fonction `spl_autoload_register()` :
+
+```php
+spl_autoload_register(
+    function($className){
+        require "../model/".$className.".php";
+    }
+);
+```
+
+La fonction d'auto-chargement est appelée chaque fois qu'une classe est instanciée. Elle reçoit le nom de la classe en paramètre. On peut utiliser le namespace de la classe pour déterminer le chemin du fichier de la classe.
+
+Il faut vérifier si le fichier existe avant de l'inclure et bien sûr, il faut inclure le fichier avant d'instancier la classe.
+
+Il faut mettre nos modèles dans un dossier `model` et nos contrôleurs dans un dossier `controller` et dans le fichier `index.php` du contrôleur frontal `public`, on peut y inclure le fichier `autoload.php` et instancier nos classes.
+
+```php
+spl_autoload_register(function ($className) {
+    // par exemple si on est dans le dossier public
+    $file = '../model/' . str_replace('\\', '/', $className) . '.php';
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+
+// Instanciation de la classe avec son namespace
+$maClasse = new MonNamespace\MaClasse();
+
+```
+
+La fonction d'auto-chargement peut être définie dans un fichier séparé. Dans ce cas, le fichier doit être inclus avant d'instancier une classe.
+
+```php
+// Inclusion du fichier contenant la fonction d'auto-chargement
+require_once 'autoload.php';
+
+// Instanciation de la classe
+$maClasse = new MaClasse();
+```
+
+
+## 6. Les exceptions
+
+Une exception est une erreur qui se produit lors de l'exécution d'un script. Elle est utilisée pour gérer les erreurs et les exceptions.
+
+Pour définir une exception, utilisez le mot clé `throw` :
+
+```php
+
+throw new Exception('Message de l\'exception');
+```
+
+Une exception peut être attrapée par un bloc `try...catch`. Un bloc `try...catch` est utilisé pour attraper une exception et la gérer.
+
+```php
+try {
+    // Code du bloc try
+} catch (Exception $e) {
+    // Code du bloc catch
+}
+```
+
+Pour gérer l'exception, on peut utiliser la méthode `getMessage()` de l'objet exception :
+
+```php
+try {
+    throw new Exception('Message de l\'exception');
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+```
+
+Exemple d'utilisation des exceptions personnalisées :
+
+```php
+<?php
+
+class DivisionParZeroException extends Exception
+{
+    public function __construct($message = "Division par zéro impossible")
+    {
+        parent::__construct($message);
+    }
+}
+
+class Division
+{
+    public function diviser($a, $b)
+    {
+        if ($b == 0) {
+            throw new DivisionParZeroException();
+        }
+        return $a / $b;
+    }
+}
+
+$division = new Division();
+
+try {
+    echo $division->diviser(10, 0);
+} catch (DivisionParZeroException $e) {
+    echo $e->getMessage();
 }
 ```
