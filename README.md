@@ -9,13 +9,48 @@
   - [1. Les classes et les objets](#1-les-classes-et-les-objets)
     - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
       - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
-      - [1.2. Instanciation d'une classe](#12-instanciation-dune-classe)
+    - [1.2. Instanciation d'une classe](#12-instanciation-dune-classe)
+    - [1.3. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe](#13-accès-aux-propriétés-et-aux-méthodes-dune-classe-depuis-lintérieur-de-la-classe)
+    - [1.4. Accès aux propriétés et aux méthodes publiques d'une classe depuis l'extérieur de la classe pour lecture ET modification](#14-accès-aux-propriétés-et-aux-méthodes-publiques-dune-classe-depuis-lextérieur-de-la-classe-pour-lecture-et-modification)
+    - [1.5 Les constructeurs](#15-les-constructeurs)
+    - [1.6 Les autres méthodes magiques](#16-les-autres-méthodes-magiques)
+    - [1.7. Les getters et les setters](#17-les-getters-et-les-setters)
+      - [1.7.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe](#172-utilisation-des-getters-pour-récupérer-des-valeurs-en-dehors-de-la-classe)
+      - [1.7.3 Utilisation des setters pour modifier des valeurs en dehors de la classe](#173-utilisation-des-setters-pour-modifier-des-valeurs-en-dehors-de-la-classe)
+  - [2. L'héritage](#2-lhéritage)
+    - [2.2. L'héritage multiple](#22-lhéritage-multiple)
+    - [2.3. L'héritage et la visibilité](#23-lhéritage-et-la-visibilité)
+    - [2.4. L'héritage et les visibilités des méthodes et des propriétés](#24-lhéritage-et-les-visibilités-des-méthodes-et-des-propriétés)
+      - [2.4.2 Les méthodes et les propriétés privées](#242-les-méthodes-et-les-propriétés-privées)
+      - [2.4.3 Les méthodes et les propriétés protégées](#243-les-méthodes-et-les-propriétés-protégées)
+      - [2.4.4 Les méthodes et les propriétés publiques](#244-les-méthodes-et-les-propriétés-publiques)
+    - [2.5. La surcharge](#25-la-surcharge)
+    - [2.6. Les classes abstraites](#26-les-classes-abstraites)
+    - [2.7. Les méthodes et les propriétés statiques](#27-les-méthodes-et-les-propriétés-statiques)
+    - [2.8. Les classes et méthodes finales](#28-les-classes-et-méthodes-finales)
+    - [2.9. Les interfaces](#29-les-interfaces)
+    - [2.10. Les traits](#210-les-traits)
+  - [3. Les espaces de noms](#3-les-espaces-de-noms)
+  - [4. Auto-chargement des classes](#4-auto-chargement-des-classes)
+  - [5. Les exceptions](#5-les-exceptions)
+  - [6. Le mapping de tables SQL en classes PHP](#6-le-mapping-de-tables-sql-en-classes-php)
+  - [7. Les Managers](#7-les-managers)
+
+---
+
 
 ### 1. Les classes et les objets
 
 **Définition** : Une **classe** est une structure qui permet de définir des objets. Une classe est un modèle qui décrit les caractéristiques communes d'un groupe d'objets.
 
 Un **objet** est une **instance d'une classe**. Un objet est une entité qui possède des propriétés, des constantes et des méthodes.
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 
 #### 1.1. Déclaration d'une classe
 
@@ -51,6 +86,13 @@ Par exemple, pour accéder à la constante `MA_CONSTANTE` depuis l'extérieur de
 echo MaClasse::MA_CONSTANTE;
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
+
 #### 1.1.2 La visibilité des propriétés et des méthodes
 
 Elle a également deux méthodes : une méthode publique `methodePublique()` qui affiche une chaîne de caractères et une méthode privée `methodePrivee()` qui affiche également une chaîne de caractères.
@@ -72,6 +114,14 @@ Les propriétés et les méthodes privées ne sont accessibles que dans la class
 
 Nous verrons plus loin l'utilité de ces différents niveaux d'accessibilité.
 
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
+
 #### 1.2. Instanciation d'une classe
 
 Il est important de noter que la déclaration d'une classe en PHP ne crée pas directement un objet. Une classe est simplement une structure qui décrit les propriétés et les méthodes d'un objet. Pour **créer un objet** à partir d'une classe, vous devez **instancier** la classe en utilisant le mot clé `new`, comme ceci :
@@ -81,6 +131,13 @@ $objet = new MaClasse();
 ```
 
 Dans cet exemple, nous avons instancié la classe MaClasse et stocké l'objet dans la variable $objet.
+
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 
 #### 1.3. Accès aux propriétés et aux méthodes d'une classe depuis l'intérieur de la classe
@@ -115,6 +172,13 @@ class MaClasse {
 }
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
+
 #### 1.4. Accès aux propriétés et aux méthodes publiques d'une classe depuis l'extérieur de la classe pour lecture ET modification
 
 Lorsque vous êtes à l'extérieur d'une classe, vous pouvez accéder à ses propriétés et à ses méthodes publiques en utilisant l'opérateur de flèche `->`, comme ceci :
@@ -137,6 +201,13 @@ $objet->proprietePublique2 = 'Valeur';
 ```
 
 **Ceci est une mauvaise pratique**, car cela peut créer des erreurs dans le code. Il est parfois pratique de pouvoir le faire, mais il est préférable de déclarer toutes les propriétés dans la classe et empêcher l'ajout de propriétés à la volée (nous verrons cela plus loin dans le cours).
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 
 #### 1.5 Les constructeurs
 
@@ -182,6 +253,13 @@ class MaClasse {
 
 Nous utiliserons plus souvent les getters et les setters pour accéder aux propriétés d'une classe.
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
+
 #### 1.6 Les autres méthodes magiques
 
 PHP propose d'autres méthodes magiques qui permettent de gérer les objets. Vous pouvez les retrouver ici :
@@ -189,6 +267,12 @@ PHP propose d'autres méthodes magiques qui permettent de gérer les objets. Vou
 https://www.php.net/manual/fr/language.oop5.magic.php
 
 Nous les verrons au fur et à mesure de nos besoins.
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 1.7. Les getters et les setters
 
@@ -249,6 +333,13 @@ class MaClasse {
 }
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
+
 #### 1.7.2 Utilisation des getters pour récupérer des valeurs en dehors de la classe
 
 ```php
@@ -260,6 +351,14 @@ echo $monObjet->proprietePublique;
 echo $monObjet->getProprietePrivee();
 echo $monObjet->getProprieteProtegee();
 ```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
+
 #### 1.7.3 Utilisation des setters pour modifier des valeurs en dehors de la classe
 
 ```php
@@ -271,6 +370,13 @@ $monObjet->proprietePublique = 'Nouvelle valeur';
 $monObjet->setProprietePrivee('Nouvelle valeur');
 $monObjet->setProprieteProtegee('Nouvelle valeur');
 ```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 
 ### 2. L'héritage
 
@@ -286,17 +392,42 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 #### 2.2. L'héritage multiple
 
 PHP ne supporte pas l'héritage multiple, c'est-à-dire qu'une classe ne peut hériter que d'une seule classe parente. Cependant, il est possible d'implémenter plusieurs interfaces (nous le verrons plus loin).
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.3. L'héritage et la visibilité
 
 Lorsque vous héritez d'une classe, vous héritez de toutes ses propriétés et de toutes ses méthodes, mais pas de sa visibilité. Les propriétés et les méthodes privées ne peuvent pas être héritées, mais les propriétés et les méthodes protégées ou publiques peuvent l'être.
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 #### 2.4. L'héritage et les visibilités des méthodes et des propriétés
 
 Lorsque vous héritez d'une classe, vous pouvez modifier la visibilité des méthodes et des propriétés héritées. Cependant, vous ne pouvez pas rendre une propriété privée ou une méthode protégée publique.
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 ##### 2.4.2 Les méthodes et les propriétés privées
 
@@ -312,6 +443,12 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 ##### 2.4.3 Les méthodes et les propriétés protégées
 
 Les méthodes et les propriétés protégées peuvent être héritées et modifiées depuis la classe enfant.
@@ -324,6 +461,11 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 ##### 2.4.4 Les méthodes et les propriétés publiques
 
@@ -336,6 +478,12 @@ class MaClasseEnfant extends MaClasse {
     $this->proprietePublique = 'Nouvelle valeur';
 }
 ```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.5. La surcharge
 
@@ -364,6 +512,11 @@ class MaClasseEnfant extends MaClasseParent {
 }
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.6. Les classes abstraites
 
@@ -404,6 +557,11 @@ class MaClasseEnfant extends MaClasseAbstraite {
 }
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.7. Les méthodes et les propriétés statiques
 
@@ -433,6 +591,11 @@ echo MaClasse::$proprieteStatique;
 echo MaClasse::methodeStatique();
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.8. Les classes et méthodes finales
 
@@ -457,6 +620,12 @@ class MaClasse {
 }
 ```
 
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.9. Les interfaces
 
@@ -513,6 +682,12 @@ interface MaInterfaceEnfant extends MaInterfaceParent1, MaInterfaceParent2 {
     // Code de l'interface enfant
 }
 ```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 #### 2.10. Les traits
 
@@ -581,6 +756,12 @@ class MaClasse3 {
     use MonTrait3;
 }
 ```
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 ### 3. Les namespaces
 
@@ -665,6 +846,13 @@ function maFonction2() {
 echo MA_CONSTANTE;
 ```
 
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 ### 4. Auto-chargement des classes
 
 L'auto-chargement des classes est utilisé pour charger automatiquement les classes. Il est utilisé pour éviter d'avoir à inclure manuellement les fichiers de classe.
@@ -709,6 +897,11 @@ require_once 'autoload.php';
 $maClasse = new MaClasse();
 ```
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
 
 ### 5. Les exceptions
 
@@ -774,14 +967,34 @@ try {
 }
 ```
 
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 ### 6. Le mapping de tables SQL en classes PHP
 
 Le mapping de tables SQL en classes PHP est utilisé pour mapper les tables SQL en classes PHP. Cela permet de manipuler les données de la base de données en utilisant des objets.
 
 A continuer...
 
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
+
 ### 7. Les Managers
 
 Un manager est une classe qui permet de manipuler les données d'une table SQL. Il permet de faire le lien entre les objets et la base de données.
 
 A continuer...
+
+
+---
+
+[Menu de navigation](#menu-de-navigation)
+
+---
