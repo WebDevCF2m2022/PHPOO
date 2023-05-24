@@ -2,6 +2,15 @@
 
 ## PHP 8 Orienté Objet
 
+---
+
+## Menu de navigation
+- [code](https://github.com/WebDevCF2m2022/PHPOO)
+  - [1. Les classes et les objets](#1-les-classes-et-les-objets)
+    - [1.1. Déclaration d'une classe](#11-déclaration-dune-classe)
+      - [1.1.2 La visibilité des propriétés et des méthodes](#112-la-visibilité-des-propriétés-et-des-méthodes)
+      - [1.2. Instanciation d'une classe](#12-instanciation-dune-classe)
+
 ### 1. Les classes et les objets
 
 **Définition** : Une **classe** est une structure qui permet de définir des objets. Une classe est un modèle qui décrit les caractéristiques communes d'un groupe d'objets.
@@ -263,7 +272,7 @@ $monObjet->setProprietePrivee('Nouvelle valeur');
 $monObjet->setProprieteProtegee('Nouvelle valeur');
 ```
 
-#### 2. L'héritage
+### 2. L'héritage
 
 L'héritage est un concept de programmation orientée objet qui permet à une classe d'hériter des propriétés et des méthodes d'une autre classe.
 
@@ -289,7 +298,7 @@ Lorsque vous héritez d'une classe, vous héritez de toutes ses propriétés et 
 
 Lorsque vous héritez d'une classe, vous pouvez modifier la visibilité des méthodes et des propriétés héritées. Cependant, vous ne pouvez pas rendre une propriété privée ou une méthode protégée publique.
 
-##### 2.4. Les méthodes et les propriétés privées
+##### 2.4.2 Les méthodes et les propriétés privées
 
 Les méthodes et les propriétés privées ne peuvent pas être héritées, donc elles ne peuvent pas être modifiées depuis la classe enfant.
 
@@ -303,7 +312,7 @@ class MaClasseEnfant extends MaClasse {
 }
 ```
 
-##### 2.4.2 Les méthodes et les propriétés protégées
+##### 2.4.3 Les méthodes et les propriétés protégées
 
 Les méthodes et les propriétés protégées peuvent être héritées et modifiées depuis la classe enfant.
     
@@ -316,7 +325,7 @@ class MaClasseEnfant extends MaClasse {
 ```
 
 
-##### 2.4.3 Les méthodes et les propriétés publiques
+##### 2.4.4 Les méthodes et les propriétés publiques
 
 Les méthodes et les propriétés publiques peuvent être héritées et modifiées depuis la classe enfant.
 
@@ -425,9 +434,31 @@ echo MaClasse::methodeStatique();
 ```
 
 
-## A faire
+#### 2.8. Les classes et méthodes finales
 
-#### 2.8. Les interfaces
+Une classe finale est une classe qui ne peut pas être héritée. Elle est utilisée pour empêcher la création de classes enfants.
+
+Pour définir une classe finale, utilisez le mot clé `final` :
+
+```php
+final class MaClasseFinale {
+    // Code de la classe finale
+}
+```
+
+Une méthode finale est une méthode qui ne peut pas être redéfinie par une classe enfant. Elle est utilisée pour empêcher la surcharge de méthodes.
+
+```php
+class MaClasse {
+    // Méthode finale
+    final public function methodeFinale() {
+        // Code de la méthode finale
+    }
+}
+```
+
+
+#### 2.9. Les interfaces
 
 Une interface est une classe abstraite qui ne contient que des méthodes abstraites. Elle est utilisée pour définir des méthodes qui seront implémentées par des classes enfants.
 
@@ -483,7 +514,7 @@ interface MaInterfaceEnfant extends MaInterfaceParent1, MaInterfaceParent2 {
 }
 ```
 
-## 3. Les traits
+#### 2.10. Les traits
 
 Un trait est un ensemble de méthodes qui peut être utilisé par plusieurs classes. Il est utilisé pour définir des méthodes qui seront utilisées par plusieurs classes.
 
@@ -551,7 +582,7 @@ class MaClasse3 {
 }
 ```
 
-## 4. Les namespaces
+### 3. Les namespaces
 
 Un namespace est un moyen d'encapsuler des éléments. Il est utilisé pour éviter les conflits de noms entre les classes, les fonctions et les constantes.
 
@@ -634,7 +665,7 @@ function maFonction2() {
 echo MA_CONSTANTE;
 ```
 
-## 5. Auto-chargement des classes
+### 4. Auto-chargement des classes
 
 L'auto-chargement des classes est utilisé pour charger automatiquement les classes. Il est utilisé pour éviter d'avoir à inclure manuellement les fichiers de classe.
 
@@ -679,7 +710,7 @@ $maClasse = new MaClasse();
 ```
 
 
-## 6. Les exceptions
+### 5. Les exceptions
 
 Une exception est une erreur qui se produit lors de l'exécution d'un script. Elle est utilisée pour gérer les erreurs et les exceptions.
 
@@ -742,3 +773,15 @@ try {
     echo $e->getMessage();
 }
 ```
+
+### 6. Le mapping de tables SQL en classes PHP
+
+Le mapping de tables SQL en classes PHP est utilisé pour mapper les tables SQL en classes PHP. Cela permet de manipuler les données de la base de données en utilisant des objets.
+
+A continuer...
+
+### 7. Les Managers
+
+Un manager est une classe qui permet de manipuler les données d'une table SQL. Il permet de faire le lien entre les objets et la base de données.
+
+A continuer...
