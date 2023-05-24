@@ -395,6 +395,7 @@ class MaClasseEnfant extends MaClasseAbstraite {
 }
 ```
 
+
 #### 2.7. Les méthodes et les propriétés statiques
 
 Une méthode ou une propriété statique est une méthode ou une propriété qui peut être utilisée sans avoir besoin d'instancier la classe.
@@ -421,4 +422,62 @@ echo MaClasse::$proprieteStatique;
 
 // Accès à une méthode statique
 echo MaClasse::methodeStatique();
+```
+
+## A faire
+
+#### 2.8. Les interfaces
+
+Une interface est une classe abstraite qui ne contient que des méthodes abstraites. Elle est utilisée pour définir des méthodes qui seront implémentées par des classes enfants.
+
+Pour définir une interface, utilisez le mot clé `interface` :
+
+```php
+interface MaInterface {
+    // Code de l'interface
+}
+```
+
+Une interface peut contenir des méthodes abstraites et des méthodes non abstraites. Une méthode abstraite est une méthode qui n'a pas de corps. Elle est définie avec le mot clé `abstract` et ne peut pas être définie avec les mots clés `private`, `protected` ou `final` (final sera abordé plus loin).
+
+```php  
+interface MaInterface {
+    // Méthode abstraite
+    abstract public function methodeAbstraite();
+    
+    // Méthode non abstraite
+    public function methodeNonAbstraite() {
+        // Code de la méthode non abstraite
+    }
+}
+```
+
+Une interface peut être implémentée par une classe. La classe doit définir toutes les méthodes abstraites de l'interface.
+
+```php
+class MaClasse implements MaInterface {
+    // Code de la classe
+    public function methodeAbstraite() {
+        // Code de la méthode abstraite
+    }
+}
+```
+
+Une classe peut implémenter plusieurs interfaces. Dans ce cas, les interfaces sont séparées par une virgule.
+
+```php
+class MaClasse implements MaInterface1, MaInterface2 {
+    // Code de la classe
+    public function methodeAbstraite() {
+        // Code de la méthode abstraite
+    }
+}
+```
+
+Une interface peut hériter d'une ou plusieurs interfaces. Dans ce cas, les interfaces sont séparées par une virgule.
+
+```php
+interface MaInterfaceEnfant extends MaInterfaceParent1, MaInterfaceParent2 {
+    // Code de l'interface enfant
+}
 ```
