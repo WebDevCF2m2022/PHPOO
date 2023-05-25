@@ -885,6 +885,17 @@ spl_autoload_register(function ($className) {
 // Instanciation de la classe avec son namespace
 $maClasse = new MonNamespace\MaClasse();
 
+// ou on peut utiliser le namespace dans le fichier
+use MonNamespace\MaClasse;
+$className2 = new MaClasse();
+
+// si on a 2 classes avec le même nom dans 2 namespaces différents, on peut éviter les conflits en utilisant le mot clé as
+use MonNamespace1\MaClasse as MaClasse1;
+use MonNamespace2\MaClasse as MaClasse2;
+
+$className1 = new MaClasse1();
+$className2 = new MaClasse2();
+
 ```
 
 La fonction d'auto-chargement peut être définie dans un fichier séparé. Dans ce cas, le fichier doit être inclus avant d'instancier une classe.
