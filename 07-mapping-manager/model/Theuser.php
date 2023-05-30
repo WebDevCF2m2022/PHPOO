@@ -28,9 +28,9 @@ class Theuser
             if (method_exists($this, $method)) { // si la méthode existe
                 // utilisation du setter correspondant
                 $this->$method($value);
-                echo "setter $method($value)<br>";
+                //echo "setter $method($value)<br>";
             }else{
-                echo "setter $method($value) n'existe pas<br>";
+                //echo "setter $method($value) n'existe pas<br>";
             }
         }
     }

@@ -14,6 +14,9 @@ use model\Theuser;
 <body>
 <h1>Utilisation mapping de theuser</h1>
 <?php
+include "public_menu.php";
+?>
+<?php
 $user1 = new Theuser([]);
 $user2 = new Theuser([
     'idTheUser'=>3,
