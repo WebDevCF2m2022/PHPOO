@@ -1,5 +1,7 @@
 <?php
 // on va utiliser des namespaces
+
+use model\ThemessageManager;
 use model\TheuserManager; // manager de la classe Theuser
 
 if(isset($_GET['user'])) {
@@ -11,7 +13,17 @@ if(isset($_GET['user'])) {
 
 }elseif(isset($_GET['messageManager'])) {
     // appel de la vue (affichage)
+    $messagemanager = new ThemessageManager($pdo);
+    try{
+        $message1 = $messagemanager->getThemessageByidTheMessage(1);
+    }catch(Exception $e){
+        $message1 = $e ->getMessage();
+    }
+    
+    $message = $messagemanager ->getAllThemessage();
+    
     require_once "../view/themessage_manager_view.php";
+
 }else {
 
     $userManager = new TheuserManager($pdo);
