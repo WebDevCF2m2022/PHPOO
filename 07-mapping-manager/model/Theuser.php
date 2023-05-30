@@ -82,7 +82,12 @@ class Theuser
 
     public function setMailTheUser(string $mailTheUser)
     {
-        $this->mailTheUser = $mailTheUser;
+        // on doit avoir un mail valide
+        if(filter_var($mailTheUser,FILTER_VALIDATE_EMAIL)===false){
+            throw new Exception("Le mail n'est pas valide");
+        }else{
+            $this->mailTheUser = $mailTheUser;
+        }
     }
 
 }
