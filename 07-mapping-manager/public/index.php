@@ -32,7 +32,7 @@ try {
     exit;
 }
 
-
+require_once "../controller/publicController.php";
 
 
 

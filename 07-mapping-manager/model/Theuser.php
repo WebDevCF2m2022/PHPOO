@@ -2,6 +2,9 @@
 
 namespace model;
 
+// on veut utiliser Exception
+use Exception;
+
 class Theuser
 {
     // propriétés
@@ -25,6 +28,9 @@ class Theuser
             if (method_exists($this, $method)) { // si la méthode existe
                 // utilisation du setter correspondant
                 $this->$method($value);
+                echo "setter $method($value)<br>";
+            }else{
+                echo "setter $method($value) n'existe pas<br>";
             }
         }
     }
@@ -58,7 +64,15 @@ class Theuser
 
     public function setLoginTheUser(string $loginTheUser)
     {
-        $this->loginTheUser = $loginTheUser;
+        // on doit avoir plus de 3 caractères
+        if($loginTheUser==="1"){
+            throw new Exception("Le login ne peut pas être '1'");
+        }
+        elseif(strlen($loginTheUser) >= 3) {
+            $this->loginTheUser = $loginTheUser;
+        }else{
+            throw new Exception("Le login doit contenir au moins 3 caractères");
+        }
     }
 
     public function setPwdTheUser(string $pwdTheUser)
