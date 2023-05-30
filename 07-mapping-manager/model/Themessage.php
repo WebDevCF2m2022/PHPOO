@@ -14,7 +14,7 @@ class Themessage
     private string $slugTheMessage;
     private string $dateTheMessage;
     private string $messageTheMessage;
-    private int $TheMessageIdTheUser;
+    private int $theMessageIdTheUser;
 
 
     // constructeur:
@@ -28,7 +28,7 @@ class Themessage
     private function hydrate(array $datas)
     {
         foreach($datas as $key => $value){
-            $method = 'set '. ucfirst($key);
+            $method = 'set'. ucfirst($key);
             if(method_exists($this, $method)){
                 $this->$method($value);
             }else{
@@ -66,7 +66,7 @@ class Themessage
 
     public function getTheMessageIdTheUser(): int
     {
-        return $this-> TheMessageIdTheUser;
+        return $this-> theMessageIdTheUser;
     }
 
 
@@ -98,7 +98,7 @@ class Themessage
 
     public function setTheMessageIdTheUser(int $theMessageIdTheUser)
     {
-        $this-> TheMessageIdTheUser = $theMessageIdTheUser;
+        $this-> theMessageIdTheUser = $theMessageIdTheUser;
     }
 
 }

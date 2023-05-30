@@ -26,6 +26,7 @@ class ThemessageManager
             // association des paramètres
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             // exécution de la requête
+            
             try{
 
                 $stmt->execute();

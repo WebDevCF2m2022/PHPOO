@@ -1,8 +1,8 @@
 <?php
-// on va tester la classe Theuser
 
 use model\ThemessageManager;
 use model\Theuser;
+
 ?>
 <!doctype html>
 <html lang="en">
