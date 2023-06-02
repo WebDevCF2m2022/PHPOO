@@ -28,4 +28,12 @@ try {
     echo 'Erreur de connexion : ' . $e->getMessage();
 }
 
+// si on est connecté on va sur le contrôleur de l'administration
+if (isset($_SESSION['idsession'])&& $_SESSION['idsession'] == session_id()) {
+    // on charge le contrôleur de l'administration
+    require_once '../controller/adminController.php';
 
+} else {
+    // sinon on va sur le contrôleur public
+    require_once '../controller/publicController.php';
+}
