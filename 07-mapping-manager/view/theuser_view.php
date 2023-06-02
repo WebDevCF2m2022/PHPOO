@@ -17,7 +17,13 @@ use model\Theuser;
 include "public_menu.php";
 ?>
 <?php
-$user1 = new Theuser([]);
+try {
+    $user1 = new Theuser([]);
+}catch (Exception $e){
+    echo "<p>{$e->getMessage()}</p>";
+}
+
+try {
 $user2 = new Theuser([
     'idTheUser'=>3,
     'loginTheUser'=>'Lulu',
@@ -25,6 +31,9 @@ $user2 = new Theuser([
     'mailTheUser'=>'mon@mail.com',
     'pourpre'=>'pourpre',
 ]);
+} catch (Exception $e) {
+    echo "<p>{$e->getMessage()}</p>";
+}
 try {
     $user3 = new Theuser([
         'loginTheUser' => true,
@@ -47,7 +56,7 @@ try {
     echo "<p>{$e->getMessage()}</p>";
 }
 
-var_dump($user1,$user2);
+var_dump($user1,$user2,/*$user3,$user4*/);
 ?>
 </body>
 </html>
