@@ -3,6 +3,8 @@
 namespace model;
 
 // on veut utiliser Exception
+
+use DateTime;
 use Exception;
 
 class Themessage 
@@ -88,7 +90,11 @@ class Themessage
 
     public function setDateTheMessage(string $dateTheMessage)
     {
-        $this-> dateTheMessage = $dateTheMessage;
+        if(is_a($dateTheMessage, 'DateTime)')){
+            throw new Exception("c'est pas une date valide");
+        }else{
+            $this-> dateTheMessage = $dateTheMessage;
+        }
     }
 
     public function setMessageTheMessage(string $messageTheMessage)

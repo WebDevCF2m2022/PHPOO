@@ -25,8 +25,11 @@ if(isset($_GET['user'])) {
     require_once "../view/theuser_view.php";
 }elseif(isset($_GET['message'])) {
     // appel de la vue (affichage)
-    require_once "../view/themessage_view.php";
 
+    
+
+    require_once "../view/themessage_view.php";
+    
 }elseif(isset($_GET['messageManager'])) {
     // appel de la vue (affichage)
     $messagemanager = new ThemessageManager($pdo);
