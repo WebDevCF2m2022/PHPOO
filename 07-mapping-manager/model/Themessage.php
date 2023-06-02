@@ -90,11 +90,7 @@ class Themessage
 
     public function setDateTheMessage(string $dateTheMessage)
     {
-        if(is_a($dateTheMessage, 'DateTime)')){
-            throw new Exception("c'est pas une date valide");
-        }else{
-            $this-> dateTheMessage = $dateTheMessage;
-        }
+            $this-> dateTheMessage = $dateTheMessage;      
     }
 
     public function setMessageTheMessage(string $messageTheMessage)

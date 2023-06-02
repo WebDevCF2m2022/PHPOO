@@ -1,9 +1,3 @@
-<?php
-
-use model\ThemessageManager;
-use model\Theuser;
-
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,6 +15,14 @@ include "public_menu.php";
 
 <?php
 
-var_dump($message1, $message, $messagemanager);
+// var_dump($messageManaged1, $messageManaged2);
+
+
+    foreach($messageManaged1 as $item){
+
+       echo "$item -> getTheMessageTheMessage";
+
+    }
+
 
 ?>

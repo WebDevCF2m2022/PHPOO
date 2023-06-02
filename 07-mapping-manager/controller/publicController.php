@@ -23,23 +23,29 @@ if(isset($_GET['user'])) {
     // appel de la vue (affichage)
     
     require_once "../view/theuser_view.php";
+
 }elseif(isset($_GET['message'])) {
     // appel de la vue (affichage)
 
-    
-
     require_once "../view/themessage_view.php";
     
+
 }elseif(isset($_GET['messageManager'])) {
-    // appel de la vue (affichage)
-    $messagemanager = new ThemessageManager($pdo);
+
+    $messageManager = new ThemessageManager($pdo);
     try{
-        $message1 = $messagemanager->getThemessageByidTheMessage(1);
+        $messageManaged1 = $messageManager->getThemessageByidTheMessage(1);
+        $messageManaged2 = $messageManager->getThemessageByidTheMessage(2);
+
     }catch(Exception $e){
-        $message1 = $e ->getMessage();
+        $messageManaged1 = $e ->getMessage();
     }
     
-    $message = $messagemanager ->getAllThemessage();
+    try{
+        $allMessages = $messageManager ->getAllThemessage();
+    }catch(Exception $e){
+        $allMessages = $e->getMessage();
+    }
     
     require_once "../view/themessage_manager_view.php";
 

@@ -39,7 +39,7 @@ class ThemessageManager
             }
         }
     
-        // on charge tous les Theuser
+        // on charge tous les themesage: 
         public function getAllThemessage(): array{
             // préparation de la requête
             $sql = "SELECT * FROM themessage";
@@ -53,7 +53,7 @@ class ThemessageManager
             // on parcourt le résultat
             foreach ($result as $row){
                 // on crée un objet Theuser que l'on ajoute dans le tableau
-                $themessages[] = new Theuser($row);
+                $themessages[] = new Themessage($row);
             }
             // on retourne le tableau
             return $themessages;
